@@ -1,0 +1,12 @@
+# Carpeta con datos privados (credenciales, dominio, etc.)
+No Subir/
+"No Subir"/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporales
+*.tmp
+*.log
