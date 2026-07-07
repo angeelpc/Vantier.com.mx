@@ -826,4 +826,31 @@
           '🚘 Servicio: '+serv+'%0A'+
           '📍 Origen: '+origen+'%0A'+
           '📍 Destino: '+destino+'%0A'+
-          '📅 Fec
+          '📅 Fecha: '+fecha+(hora?' a las '+hora:'')+'%0A'+
+          '👥 Pasajeros: '+pax+
+          (tel?'%0A📞 Mi teléfono: '+tel:'')+
+          '%0A%0A¿Me pueden enviar precio y disponibilidad?';
+    } else {
+      var origen2=val('origen'), destino2=val('destino'), fecha2=val('fecha'), pax2=val('pax');
+      var servs=Array.prototype.slice.call(document.querySelectorAll('input[name="serv"]:checked')).map(function(c){return c.value;});
+      var servTxt=servs.length?servs.join(', '):'Traslado';
+      msg='Hola, quisiera cotizar un traslado con Vantier:%0A%0A'+
+          '🚘 Servicio: '+servTxt+'%0A'+
+          '📍 Origen: '+origen2+'%0A'+
+          '📍 Destino: '+destino2+'%0A'+
+          '📅 Fecha: '+fecha2+'%0A'+
+          '👥 Pasajeros: '+pax2+
+          '%0A%0A¿Me pueden enviar precio y disponibilidad?';
+    }
+    window.open('https://wa.me/523341063142?text='+msg,'_blank');
+  }
+  function val(id){var el=document.getElementById(id);return el?el.value:'';}
+
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){en.target.classList.add('in'); io.unobserve(en.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+</script>
+
+</body>
+</html>
